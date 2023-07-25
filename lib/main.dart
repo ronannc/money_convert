@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:money_convert/services/api_service.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const Home(),
-    );
-  }
+void main() async{
+  Api api = Api();
+  print( await api.getCurrency('USD-BRL'));
+  runApp(MaterialApp(
+    home: Home() ,
+  ));
 }
 
 class Home extends StatefulWidget {
@@ -26,6 +19,13 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Conversor'),
+      ),
+    );
   }
 }
+
+
+
